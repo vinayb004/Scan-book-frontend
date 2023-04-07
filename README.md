@@ -27,6 +27,18 @@ npm install
 ```
    Or, if you are using yarn, run the following command:
 ```
+yarn
+```
+
+## Run
+To run the React application, follow these steps:
+1. Make sure you are still in the directory of the application in the command prompt or terminal.
+2. Run the following command to start the development server:
+```
+npm start
+```
+   Or, if you are using yarn, run the following command:
+```
 yarn start
 ```
 3. The React application will now start and you will see logs indicating the server is running.
