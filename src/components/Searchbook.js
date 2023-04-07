@@ -61,7 +61,7 @@ export const Searchbook = () => {
           setErrorMessage("Error retrieving book from database.");
         }
       }
-      else if (bookExists.exists === false || isDbOk === false){
+      else if (bookExists?.exists === false || isDbOk === false){
         // If the book does not exist in the database, look it up using the Google Books API
         const googleResponse = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`
