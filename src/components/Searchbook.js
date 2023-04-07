@@ -33,13 +33,20 @@ export const Searchbook = () => {
         setErrorMessage("Invalid ISBN. Checksum mismatch.");
         return;
       }
-      const dbResponse = await fetch(
-        `http://localhost:8080/books/checkISBN/${isbn}`
-      );
-      const bookExists = await dbResponse.json();
-      console.log(bookExists);
+      let isDbOk = true;
+      let bookExists;
+      try {
+        const dbResponse = await fetch(
+          `http://localhost:8080/books/checkISBN/${isbn}`
+        );
+        bookExists = await dbResponse.json();
+        console.log(bookExists);
+      } catch (error) {
+        isDbOk = false;
+      }
+      
 
-      if (bookExists.exists === true) {
+      if (bookExists?.exists === true) {
         // If the book exists in the database, return the stored information
         const response = await fetch(
           `http://localhost:8080/books/book/${isbn}`
@@ -54,7 +61,7 @@ export const Searchbook = () => {
           setErrorMessage("Error retrieving book from database.");
         }
       }
-      else {
+      else if (bookExists === false || isDbOk === false){
         // If the book does not exist in the database, look it up using the Google Books API
         const googleResponse = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`
@@ -97,8 +104,7 @@ export const Searchbook = () => {
         }
       }
     } catch (error) {
-      setBookInfo(null);
-      setErrorMessage("Error searching for book.");
+      console.log(error);
     }
   };
   const handleIsbnChange = (event) => {
