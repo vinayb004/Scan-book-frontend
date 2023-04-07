@@ -1,0 +1,37 @@
+.message {
+  color: rgb(0, 81, 255);
+  margin-top: 20px;
+  font-size: 18px;
+}
+.deletebook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.delete-book {
+  margin-bottom: 16px;
+}
+
+.delete-book input[type="text"] {
+  padding: 8px;
+  margin-left: 8px;
+  font-size: 16px;
+}
+.deletebook-container button {
+  background-color: #3b6ac1;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.deletebook-container button:hover {
+  opacity: 0.8;
+}
